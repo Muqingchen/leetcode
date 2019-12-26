@@ -23,7 +23,7 @@ namespace leetcode
             var b = new int[] { 5,6,4 };
             var l1 = GetListNode(a);
             var l2 = GetListNode(b);
-            var l3=Solution(l1, l2);
+            var l3 = Solution(l1, l2);
             while (l3 != null)
             {
                 Console.Write(l3.val.ToString());
