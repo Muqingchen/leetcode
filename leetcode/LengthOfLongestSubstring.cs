@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,16 +36,17 @@ namespace leetcode
 
         private int Solution(string s)
         {
-            int max = 1;
-            Dictionary<char, int> keyValuePairs = new Dictionary<char, int>();
-            for(int start=0,end=0; end < s.Length;end++)
+            int max = 0;
+            int len = s.Length;
+            Dictionary<char, int> dic = new Dictionary<char, int>();
+            for(int start=0,end=0; end < len; end++)
             {
-                if (!keyValuePairs.ContainsKey(s.ElementAt(end))){
-                    keyValuePairs.Add(s.ElementAt(end), end);
-
+                if (dic.ContainsKey(s[end]))
+                {
+                    start = Math.Max(dic[s[end]], start);
                 }
                 max = Math.Max(max, end - start + 1);
-                    start++;
+                dic[s[end]] = end + 1;
             }
             return max;
         }

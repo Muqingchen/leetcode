@@ -6,7 +6,7 @@ namespace leetcode
     {
         static void Main()
         {
-            var solution = new AddTwoNumbers();
+            var solution = new FindMedianSortedArrays();
             solution.Execute();
         }
     }
