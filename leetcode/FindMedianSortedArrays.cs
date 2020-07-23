@@ -26,9 +26,11 @@ namespace leetcode
     {
         public void Execute()
         {
-            var nums1 = new int[] { 1, 2,3 };
-            var nums2 = new int[] { 4,5,6,7,8,9,10,11};
-            var ret = Solution(nums1,nums2);
+            //var nums1 = new int[] { 1, 2,3 };
+            //var nums2 = new int[] { 4,5,6,7,8,9,10,11};
+            var nums1 = new int[] { 1,  3 };
+            var nums2 = new int[] { 2 };
+            var ret = Solution1(nums1,nums2);
             Console.Write(ret.ToString());
             Console.ReadLine();
         }
@@ -78,9 +80,45 @@ namespace leetcode
         }
 
 
-        //private double Solution1(int[] nums1, int[] nums2)
-        //{
+        private double Solution1(int[] nums1, int[] nums2)
+        {
+            int m = nums1.Length;
+            int n = nums2.Length;
+            int left = (m + n + 1) / 2;
+            int right = (m + n + 2) / 2;
+            return (GetKth(nums1, 0, m - 1, nums2, 0, n - 1, left) + GetKth(nums1, 0, m - 1, nums2, 0, n - 1, right)) / 2.0;
+        }
+        /// <summary>
+        /// 求第k小数
+        /// </summary>
+        /// <param name="nums1">有序数组1</param>
+        /// <param name="start1"></param>
+        /// <param name="end1"></param>
+        /// <param name="nums2">有序数组2</param>
+        /// <param name="start2"></param>
+        /// <param name="end2"></param>
+        /// <param name="k"></param>
+        /// <returns></returns>
+        private int GetKth(int[] nums1,int start1,int end1,int[] nums2,int start2,int end2,int k)
+        {
+            int len1 = end1 - start1 + 1;
+            int len2 = end2 - start2 + 1;
+            // 保证nums是短的那个数组
+            if (len1 > len2) return GetKth(nums2, start2, end2, nums1, start1, end1, k);
+            if (len1 == 0) return nums2[start2 + k - 1];// 如果数组1的长度为0，说明第k小数在num2里
+            if (k == 1) return Math.Min(nums1[start1], nums2[start2]);
 
-        //}
+            int i = Math.Min(k / 2, len1) + start1 - 1;
+            int j = Math.Min(k / 2, len2) + start2 - 1;
+            if (nums1[i] >= nums2[j])
+            {
+                return GetKth(nums1, start1, end1, nums2, j + 1, end2, k - (j - start2 + 1));
+            }
+            else
+            {
+                return GetKth(nums1, i + 1, end1, nums2, start2, end2, k - (i - start1 + 1));
+            }
+
+        }
     }
 }
