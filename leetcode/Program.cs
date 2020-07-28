@@ -6,7 +6,7 @@ namespace leetcode
     {
         static void Main()
         {
-            var solution = new Reverse();
+            var solution = new MinFlips();
             solution.Execute();
         }
     }

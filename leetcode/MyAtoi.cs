@@ -56,7 +56,7 @@ namespace leetcode
     {
         public void Execute()
         {
-            var ret = Solution(Int32.MinValue);
+            var ret = Solution("words and 987");
             Console.WriteLine("值为：{0}", ret);
             Console.ReadLine();
         }
@@ -64,16 +64,17 @@ namespace leetcode
 
         private int Solution(string str)
         {
-            var reg = new Regex(@"^(\s)(\-|\+)?\d");
-            var temp = reg.Match(str);
-            if (!string.IsNullOrEmpty(temp.Result))
-            var a = Int64.Parse(reg)
+            //var reg = new Regex(@"^(\s)(\-|\+)?\d");
+            //var temp = reg.Match(str);
+            //if (!string.IsNullOrEmpty(temp.Result))
+            //    var a = Int64.Parse(temp.Result);
 
-            var flag = x < 0 ? -1 : 1;
-            var a = string.Join("", x.ToString().Trim('-') .Reverse());
-            long y = flag * Int64.Parse(a);
-            if (y > Int32.MaxValue || y < Int32.MinValue) return 0;
-            return (int)y;
+            //var flag = x < 0 ? -1 : 1;
+            //var a = string.Join("", x.ToString().Trim('-') .Reverse());
+            //long y = flag * Int64.Parse(a);
+            //if (y > Int32.MaxValue || y < Int32.MinValue) return 0;
+            //return (int)y;
+            return 0;
         }
     }
 }

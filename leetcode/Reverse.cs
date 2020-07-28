@@ -21,7 +21,7 @@ namespace leetcode
         private int Solution(int x)
         {
             var flag = x < 0 ? -1 : 1;
-            var a = string.Join("", x.ToString().Trim('-') .Reverse());
+            var a = string.Join("", x.ToString().Trim('-').Reverse());
             long y = flag * Int64.Parse(a);
             if (y > Int32.MaxValue || y < Int32.MinValue) return 0;
             return (int)y;
